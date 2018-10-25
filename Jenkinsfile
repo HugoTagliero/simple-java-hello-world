@@ -51,7 +51,7 @@ spec:
         }
       }
     }
-stage('Test') {
+stage('DockerBuild') {
       steps {
         container('docker') {
           sh 'docker build -t my-app:$BUILD_NUMBER .'
