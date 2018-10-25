@@ -58,6 +58,18 @@ stage('DockerBuild') {
         }
       }
     }
+stage('DockerRun') {
+      steps {
+        container('docker') {
+          sh 'docker run my-app:$BUILD_NUMBER'
+        }
+      }
+    }
+post {
+    always {
+      junit 'target/surefire-reports/*.xml'
+    }
+  }
 
 }
 }
